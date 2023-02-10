@@ -1,5 +1,5 @@
-async function fetchPlanets() { 
-  let results = await fetct("https://swapi-api.alx-tools.com/api/");
+async function fetchPlanets(id) { 
+  let results = await fetct(`https://swapi-api.alx-tools.com/api/people/${id}`);
   const data = await results.json();
     
   const planets = data.results;
