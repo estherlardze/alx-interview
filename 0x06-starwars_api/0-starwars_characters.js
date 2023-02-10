@@ -5,7 +5,7 @@ async function fetchPlanets(id) {
   const data = await results.json();
     
   const planets = data.results;
-  planets.forEach(item => console.log(item))
+  planets.forEach(item => console.log(item.name))
   
 } 
 fetchPlanets();
