@@ -1,11 +1,22 @@
 #!/usr/bin/node
 
-async function fetchPlanets(id) { 
-  let results = await fetct(`https://swapi-api.alx-tools.com/api/people/${id}`);
-  const data = await results.json();
-    
-  const planets = data.results;
-  planets.forEach(item => console.log(item.name))
-  
-} 
-fetchPlanets();
+const request = require('request');
+const movieId = process.argv[2];
+
+request(`https://swapi-api.alx-tools.com/api/people/${id}`, function (error, response, body) {
+  if (!error) {
+    const characters = JSON.parse(body).characters;
+    printCharacters(characters, 0);
+  }
+});
+
+function printCharacters (characters, index) {
+  request(characters[index], function (error, response, body) {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+}
