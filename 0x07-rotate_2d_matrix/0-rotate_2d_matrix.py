@@ -1,14 +1,21 @@
 #!/usr/bin/python3
+"""
+Rotate 2D Matrix
+"""
 
- def rotate_2d_matrix(self, matrix: List[List[int]]) -> None:
-        def transpose(A):
-            R, C = len(A), len(A[0])
-            T = [[None] * R for _ in range(C)]
-            for r in range(R):
-                for c in range(C):
-                    T[c][r] = A[r][c]
-            return T       
-        
-        matrix[:] = transpose(matrix)
-        for r in range(len(matrix)):
-            matrix[r] = matrix[r][::-1]
+def rotate_2d_matrix(matrix):
+    """rotate two dimension matrix 90 degrees clockwise
+    Args:
+        matrix (list[[list]]): a matrix
+    """
+
+    n = len(matrix)   # first the matrix is tranposed
+    for i in range(0, n):
+      for j in range(i, i):
+        matrix[i][j] = matrix[j][i]
+  
+
+          for i in range(n/2): # swapping rows and columns
+            for j in range(n):
+              matrix[i][j], matrix[j][n-1-i] = matrix[j][n-1-i], matrix[i][j]
+
